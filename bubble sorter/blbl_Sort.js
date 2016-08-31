@@ -12,11 +12,10 @@ var numberGroup = [33, 28, 19, 4, 56, 8, 3, 12, 13, 44, 56, 9, 42, 7, 17, 31];
 //this fucntions will start the sort algorithm
 	function bubleSort(arrayOfNumbers)
 	{
-		//this empty object will help terminate the loop once done by seting a bull
-		//must be empty to alow the function to run
+		//this empty object will help terminate the loop 
 		var sorted;
 
-		//the do while loop will alow me to keep it going until sort changes
+		//the do while loop will alow me to keep it going until sorted changes
 		do{
 			//starting the bull at false this will later change if still soritng or
 			//stay false if done
