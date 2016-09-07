@@ -1,0 +1,69 @@
+<html>
+<script>
+var items = [33, 28, 19, 4, 56, 8, 3, 12, 13, 44, 56, 9, 42, 7, 17, 31];
+//this is the swap of items in array "similar to the swap from bubble sort"
+function swap(items, firstIndex, secondIndex){
+    var temp = items[firstIndex];
+    items[firstIndex] = items[secondIndex];
+    items[secondIndex] = temp;
+}
+
+//this will partition the array and makes 2 points of comparison
+//this is done in the same array so there is no need to make a new object array
+function partition(items, left, right) {
+
+    var pivot   = items[Math.floor((right + left) / 2)],
+        i       = left,
+        j       = right;
+
+//this part moves the index points to compar
+    while (i <= j) {
+
+        while (items[i] < pivot) {
+            i++;
+        }
+
+        while (items[j] > pivot) {
+            j--;
+        }
+
+        if (i <= j) {
+            swap(items, i, j);
+            i++;
+            j--;
+        }
+    }
+//this part returns the index "i"
+    return i;
+}
+
+//this where the big part of the sort is done
+function quickSort(items, left, right) {
+
+    var index;
+//this makes it so that if the array that is passed has only one item then it doesnt run the comparisons
+    if (items.length > 1) {
+      //i used this to make it more user friendly and created left and right if they are not provided by user
+        left = typeof left != "number" ? 0 : left;
+        right = typeof right != "number" ? items.length - 1 : right;
+        //this var created an index that is returned by partition function
+        index = partition(items, left, right);
+//this loops run to make the sort work
+        if (left < index - 1) {
+            quickSort(items, left, index - 1);
+        }
+
+        if (index < right) {
+            quickSort(items, index, right);
+        }
+
+    }
+//this returns the results of the sorted array 
+    return items;
+}
+
+// first call
+var result = quickSort(items);
+console.log(items);
+</script>
+</html>
