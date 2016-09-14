@@ -1,36 +1,24 @@
-var bubbleArray = [];
-var quick1Array = [];
-var quick2Array = [];
+var array = [];
 
-while(bubbleArray.length < 20){
-  var randomnumber=Math.ceil(Math.random()*100)
-  var found=false;
-  for(var i=0;i<bubbleArray.length;i++){
-	if(bubbleArray[i]==randomnumber){found=true;break}
-  }
-  if(!found)bubbleArray[bubbleArray.length]=randomnumber;
+while (array.length < 20) {
+    var randomnumber = Math.ceil(Math.random() * 100)
+    var found = false;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] == randomnumber) {
+            found = true;
+            break
+        }
+    }
+    if (!found) array[array.length] = randomnumber;
 }
 
-while(quick1Array.length < 20){
-  var randomnumber=Math.ceil(Math.random()*100)
-  var found=false;
-  for(var i=0;i<quick1Array.length;i++){
-	if(quick1Array[i]==randomnumber){found=true;break}
-  }
-  if(!found)quick1Array[quick1Array.length]=randomnumber;
-}
-
-while(quick2Array.length < 20){
-  var randomnumber=Math.ceil(Math.random()*100)
-  var found=false;
-  for(var i=0;i<quick2Array.length;i++){
-	if(quick2Array[i]==randomnumber){found=true;break}
-  }
-  if(!found)quick2Array[quick2Array.length]=randomnumber;
-}
+var bubbleArray = array.slice();
+var quick1Array = array.slice();
+var quick2Array = array.slice();
 
 //bubble sort
 var bubble1 = performance.now();
+
 function bubleSort(items) {
     var arrayOfNumbers = items;
     var sorted;
@@ -83,6 +71,7 @@ function partition(items, left, right) {
 }
 
 var quick01 = performance.now();
+
 function quickSort(items, left, right) {
 
     var index;
@@ -110,20 +99,21 @@ var quick02 = performance.now();
 
 // Lomuto partition
 function partitionLomuto(array, left, right) {
-  var pivot = right;
-  var i = left;
+    var pivot = right;
+    var i = left;
 
-  for(var j = left; j < right; j++) {
-    if(array[j] <= array[pivot]) {
-      swap(array, i , j);
-      i = i + 1;
+    for (var j = left; j < right; j++) {
+        if (array[j] <= array[pivot]) {
+            swap(array, i, j);
+            i = i + 1;
+        }
     }
-  }
-  swap(array, i, j);
-  return i;
+    swap(array, i, j);
+    return i;
 }
 
 var quick11 = performance.now();
+
 function quickSort2(array, left, right) {
 
     var index;
@@ -149,9 +139,15 @@ function quickSort2(array, left, right) {
 }
 var quick12 = performance.now();
 
-console.log(quick1Array, quick2Array, bubbleArray);
+var quicksortp1 = quick02 - quick01;
+var quicksortp2 = quick12 - quick11;
+var bubblesortp = bubble2 - bubble2;
+
+
 
 quickSort(quick1Array);
 quickSort2(quick2Array);
 bubleSort(bubbleArray);
+
 console.log(quick1Array, quick2Array, bubbleArray);
+console.log(bubblesortp, quicksortp1, quicksortp2);
